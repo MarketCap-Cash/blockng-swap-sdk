@@ -3,18 +3,18 @@ import { ChainId, WETH, Token, Fetcher } from '../src'
 // TODO: replace the provider in these tests
 describe.skip('data', () => {
   it('Token', async () => {
-    const token = await Fetcher.fetchTokenData(ChainId.MAINNET, '0x6B175474E89094C44Da98b954EedeAC495271d0F') // DAI
+    const token = await Fetcher.fetchTokenData(ChainId.MAINNET, '0x0b00366fBF7037E9d75E4A569ab27dAB84759302') // LAW
     expect(token.decimals).toEqual(18)
   })
 
   it('Token:CACHE', async () => {
-    const token = await Fetcher.fetchTokenData(ChainId.MAINNET, '0xE0B7927c4aF23765Cb51314A0E0521A9645F0E2A') // DGD
-    expect(token.decimals).toEqual(9)
+    const token = await Fetcher.fetchTokenData(ChainId.MAINNET, '0x265bD28d79400D55a1665707Fa14A72978FA6043') // CATS
+    expect(token.decimals).toEqual(2)
   })
 
   it('Pair', async () => {
-    const token = new Token(ChainId.TESTNET, '0xc7AD46e0b8a400Bb3C915120d284AafbA8fc4735', 18) // DAI
-    const pair = await Fetcher.fetchPairData(WETH[ChainId.TESTNET], token)
-    expect(pair.liquidityToken.address).toEqual('0x8B22F85d0c844Cf793690F6D9DFE9F11Ddb35449')
+    const token = new Token(ChainId.MAINNET, '0x0b00366fBF7037E9d75E4A569ab27dAB84759302', 18) // LAW
+    const pair = await Fetcher.fetchPairData(WETH[ChainId.MAINNET], token)
+    expect(pair.liquidityToken.address).toEqual('0x54AA3B2250A0e1f9852b4a489Fe1C20e7C71fd88')
   })
 })
